@@ -246,7 +246,7 @@ def writeDatabase(outDBNames, files_list, w, h, data_root="", gpu_id=0, prev_mod
 	r = Random(0) # make a random number generator instance seeded with 0	
 	if test_db:
 		plt.ion()	
-	inds = range(n)
+	inds = list(range(n))
 	# shuffling indices will slow down the array accessing process,
 	# but will take away any relationship between adjacent images, making the model better
 	r.shuffle(inds) # note that shuffle works in place
