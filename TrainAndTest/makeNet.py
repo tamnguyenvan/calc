@@ -216,15 +216,16 @@ def moveModel(model_dir=""):
 	for solverstate in solverstates:
 		move(solverstate, "model/"+model_dir+"/"+solverstate)	
 
-def train(solver_proto_path, snapshot_solver_path=None, init_weights=None, GPU_ID=0):
+def train(solver_proto_path, snapshot_solver_path=None, init_weights=None, GPU_ID=None):
 	"""
 	Train the defined net. While we did not use this function for our final net, we used the caffe executable for multi-gpu use, this was used for prototyping
 	"""
 
 	import time
 	t0 = time.time()
-	caffe.set_mode_gpu()
-	caffe.set_device(GPU_ID)
+	if isinstance(GPU_ID, int):
+		caffe.set_mode_gpu()
+		caffe.set_device(GPU_ID)
 	solver = caffe.get_solver(solver_proto_path)
 	if snapshot_solver_path is not None:
 		solver.solve(snapshot_solver_path) # train from previous solverstate
