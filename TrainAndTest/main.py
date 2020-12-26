@@ -70,7 +70,7 @@ if __name__ == '__main__':
     db_parser.add_argument('-ta', '--train-after', dest='trainAfter', action='store_true', help='Flag for whether or not to train immediately after witing the database', default=False) 
 
     db_parser.add_argument('-dr', '--data-root', dest='dataRoot', nargs='?', help='Where you want the train_data directory to be placed. Default is $PWD', default="", type=str)                               
-    db_parser.add_argument('-g', '--gpu-id', dest='gpu_id', nargs='?', help='The ID of the gpu to use for training.' , default=0, type=int)        
+    db_parser.add_argument('-g', '--gpu-id', dest='gpu_id', nargs='?', help='The ID of the gpu to use for training.' , default=None, type=int)        
 
     db_parser.add_argument('-b', '--batch-sz', dest='batch_size', nargs='?', help='Batch size to train with. Deafult is: ' + str(default_batch_sz), default=default_batch_sz, type=int)        
 
